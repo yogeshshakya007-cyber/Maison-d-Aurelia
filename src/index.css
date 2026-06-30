@@ -1,0 +1,332 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-gold-light: #F3EFE0;
+  --color-gold-mid: #D4AF37;
+  --color-gold-dark: #AA7C11;
+  --color-maroon-light: #A52A2A;
+  --color-maroon-mid: #800020;
+  --color-maroon-dark: #5C0017;
+  --color-ivory: #FCFBF8;
+  --color-ivory-dark: #F7F4EB;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  img,
+  video,
+  canvas,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3, h4, .font-serif-header {
+    font-family: var(--font-serif);
+  }
+}
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Premium Announcement Bar Ticker Styles */
+.premium-announcement-bar {
+    background-color: #580c1f; /* Premium Royal Maroon matched with screenshot */
+    color: #ffffff;
+    font-family: 'Cinzel', 'Playfair Display', 'Inter', 'Montserrat', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 500;
+    padding: 10px 16px; /* Gutter padding */
+    overflow: hidden;
+    position: relative;
+    z-index: 50; /* Ensure on top, never hidden behind right-floating or absolute components */
+    width: 100%;
+    border-bottom: 1px solid #d4af37; /* Gold outline */
+}
+
+.announcement-ticker {
+    display: flex;
+    white-space: nowrap;
+    width: max-content;
+    animation: ticker-animation 25s linear infinite;
+    will-change: transform;
+}
+
+.premium-announcement-bar:hover .announcement-ticker {
+    animation-play-state: paused;
+}
+
+.ticker-item {
+    display: inline-block;
+    padding: 0 60px; /* Increased spacer between offers for completely visible flowing text */
+}
+
+.highlight-code {
+    color: #d4af37; /* Golden accent color for coupon codes */
+    font-weight: 700;
+    border: 1px dashed #d4af37;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* Ultra smooth infinite marquee animation */
+@keyframes ticker-animation {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0); /* Perfectly duplicates halfway through */
+    }
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+    .premium-announcement-bar {
+        font-size: 11px;
+        padding: 8px 0;
+    }
+}
+
+/* Premium features trusted highlight styles (Always Horizontal) */
+.custom-premium-footer-features {
+  display: flex;
+  flex-direction: row; /* Always horizontal! */
+  justify-content: space-around;
+  align-items: center;
+  gap: 24px;
+  padding: 45px 5%; /* Generous breathing space */
+  background-color: #ffffff; /* Clean solid white background */
+  border-top: 1px solid #f0edf0;
+  border-bottom: 1px solid #f0edf0;
+  margin-top: 45px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.premium-feature-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.premium-feature-inner {
+  display: flex;
+  flex-direction: row; /* Align icon on left, content on right */
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* Breathing space between icon and text */
+}
+
+.premium-feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.premium-feature-icon svg {
+  width: 28px; /* Enlarged and more premium */
+  height: 28px;
+  stroke: #800020; /* Elegant Brand Maroon */
+  stroke-width: 1.4;
+}
+
+.premium-feature-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Main Text Style - Elegant Serif paired with signature Maroon */
+.premium-main-text {
+  font-family: 'Playfair Display', serif, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #800020; /* Signature Maroon color */
+  margin: 0 0 3px 0;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  line-height: 1.25;
+}
+
+/* Sub text small description style */
+.premium-sub-text {
+  font-family: "Inter", sans-serif;
+  font-size: 12px; /* Readable on desktop */
+  color: #555555;
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+/* Vertical Divider style */
+.premium-divider {
+  width: 1px;
+  height: 36px; /* Elegant taller divider */
+  background-color: #ebdcd0;
+  flex-shrink: 0;
+  margin: 0 10px;
+}
+
+/* Responsive media queries to scale down for mobile viewport to keep everything in 1 line */
+@media (max-width: 768px) {
+  .custom-premium-footer-features {
+    gap: 12px;
+    padding: 30px 3%; /* Generous breathing space even on mobile */
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  .premium-feature-inner {
+    gap: 8px;
+  }
+  .premium-feature-icon svg {
+    width: 24px; /* Perfectly scaled premium icon */
+    height: 24px;
+  }
+  .premium-main-text {
+    font-size: 11px; /* Clear and readable */
+    letter-spacing: 0.4px;
+    margin-bottom: 1px;
+    white-space: normal;
+  }
+  .premium-sub-text {
+    font-size: 11px; /* 11px readability requirement */
+    white-space: normal;
+  }
+  .premium-divider {
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-premium-footer-features {
+    gap: 8px;
+    padding: 25px 2%; /* Strict 25px top/bottom padding to fix squeeze */
+  }
+  .premium-feature-inner {
+    gap: 6px;
+  }
+  .premium-feature-icon svg {
+    width: 20px; /* Highly visible on small screen */
+    height: 20px;
+  }
+  .premium-main-text {
+    font-size: 10px;
+    letter-spacing: 0.2px;
+    white-space: normal;
+  }
+  .premium-sub-text {
+    font-size: 11px; /* Strict 11px / 12px mobile readability requirement */
+    white-space: normal;
+    color: #666666;
+  }
+  .premium-divider {
+    height: 24px;
+    margin: 0 4px;
+  }
+}
+
+/* Base styling for the sticky mobile navigation */
+.mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background-color: #FFFFFF;
+    box-shadow: 0 -3px 15px rgba(0, 0, 0, 0.04);
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 9999;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Inactive State: Elegant muted grey as requested */
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #757575; /* Elegant Muted Grey */
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 6px 4px;
+    width: 20%;
+}
+
+/* Icons Line Weight */
+.nav-icon {
+    margin-bottom: 4px;
+    opacity: 0.8;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+/* Label styling centered */
+.nav-label {
+    text-align: center;
+    display: block;
+}
+
+/* Active State: Clicked or Active Deep Maroon colors */
+.nav-item.active, .nav-item:hover {
+    color: #800020; /* AURELIA Premium Maroon */
+}
+
+.nav-item.active .nav-icon, .nav-item:hover .nav-icon {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+/* Desktop and Tablet view override */
+@media (min-width: 769px) {
+    .mobile-bottom-nav {
+        display: none !important; /* Completely hidden on larger screens */
+    }
+}
+
+/* Extra safety padding for main content so nothing gets hidden behind the bar */
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 70px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .write-review-container-or-form-class {
+        margin-bottom: 90px !important;
+    }
+}
+

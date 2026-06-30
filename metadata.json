@@ -1,0 +1,7 @@
+{
+  "description": "An exquisite, high-end fine jewelry brand with royal Gold, Ivory, and Maroon aesthetics, featuring AI styling advice, smart gemologist concierge, real-time analytics, and loyalty features.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

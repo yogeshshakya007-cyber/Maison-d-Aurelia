@@ -725,7 +725,7 @@ export default function App() {
                 <img 
                   src={lionMakeIndia} 
                   alt="Make In India" 
-                  className="w-[130px] md:w-[180px] h-auto object-contain transition-opacity duration-300 opacity-95 hover:opacity-100 block"
+                  className="w-[100px] md:w-[180px] h-auto object-contain transition-opacity duration-300 opacity-95 hover:opacity-100 block"
                   loading="lazy"
                   decoding="async"
                   referrerPolicy="no-referrer"

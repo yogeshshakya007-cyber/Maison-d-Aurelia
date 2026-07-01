@@ -5,7 +5,9 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/Maison-d-Aurelia/',
+    // Vercel और सामान्य डिप्लॉयमेंट के लिए डिफ़ॉल्ट रूप से '/' रहेगा।
+    // GitHub Pages पर डिप्लॉय करते समय केवल DEPLOY_ENV=gh-pages एनवायरनमेंट वेरिएबल पास करना होगा।
+    base: process.env.DEPLOY_ENV === 'gh-pages' ? '/Maison-d-Aurelia/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -14,9 +16,7 @@ export default defineConfig(() => {
     },
     server: {
       // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
     },
   };
